@@ -1,0 +1,1875 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "server",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/ActivityLog": {
+      "get": {
+        "tags": [
+          "ActivityLog"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "module",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actionType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ActivityLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityLog"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityLog"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityLog"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ActivityLog"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ActivityLog/job/{job}": {
+      "get": {
+        "tags": [
+          "ActivityLog"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ActivityLog/{id}": {
+      "delete": {
+        "tags": [
+          "ActivityLog"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/job/{jobNumber}": {
+      "get": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "jobNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Ipo/bom/{item}": {
+      "get": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BomResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BomResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BomResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Ipo": {
+      "get": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Ipo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Ipo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Ipo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/full": {
+      "get": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/summary-report": {
+      "get": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/{job}": {
+      "get": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/save": {
+      "post": {
+        "tags": [
+          "Ipo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/update": {
+      "put": {
+        "tags": [
+          "Ipo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IpoSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ipo/{job}/roll/{runNo}": {
+      "delete": {
+        "tags": [
+          "Ipo"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "runNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/job/{jobNumber}": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "jobNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Slit/bom/{item}": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BomResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BomResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BomResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Slit": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Slit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Slit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "routeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/full": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/summary-report": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/by-job": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/check-emboss-lot": {
+      "get": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "lot",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "excludeJob",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "excludeId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/save": {
+      "post": {
+        "tags": [
+          "Slit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/save-batch": {
+      "post": {
+        "tags": [
+          "Slit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SlitSaveRequest"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SlitSaveRequest"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SlitSaveRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/update": {
+      "put": {
+        "tags": [
+          "Slit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlitSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Slit/{routeId}": {
+      "delete": {
+        "tags": [
+          "Slit"
+        ],
+        "parameters": [
+          {
+            "name": "job",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "routeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ActivityLog": {
+        "required": [
+          "actionType",
+          "employeeName",
+          "job",
+          "module",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "module": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "job": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "actionType": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "employeeId": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "employeeName": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "runNo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BomResponse": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "operateNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "materialItem": {
+            "type": "string",
+            "nullable": true
+          },
+          "materialDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "materialColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "materialPVCColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "thickness": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "width": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "length": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "matlQty": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoDefect": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "detailRunNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "settingMachine": {
+            "type": "number",
+            "format": "double"
+          },
+          "jointIpo": {
+            "type": "number",
+            "format": "double"
+          },
+          "splitSeam": {
+            "type": "number",
+            "format": "double"
+          },
+          "dimensionNg": {
+            "type": "number",
+            "format": "double"
+          },
+          "foamDetached": {
+            "type": "number",
+            "format": "double"
+          },
+          "jointMark": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickNg": {
+            "type": "number",
+            "format": "double"
+          },
+          "filmBlemish": {
+            "type": "number",
+            "format": "double"
+          },
+          "otherNg": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "runNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lotSlit": {
+            "type": "string",
+            "nullable": true
+          },
+          "lotTap": {
+            "type": "string",
+            "nullable": true
+          },
+          "lotTap2": {
+            "type": "string",
+            "nullable": true
+          },
+          "lotSlit2": {
+            "type": "string",
+            "nullable": true
+          },
+          "rollSlit": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalRollSlit": {
+            "type": "string",
+            "nullable": true
+          },
+          "rollSlit2": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalRollSlit2": {
+            "type": "string",
+            "nullable": true
+          },
+          "lotEmboss": {
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "endTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalMeters": {
+            "type": "number",
+            "format": "double"
+          },
+          "downtimeNote": {
+            "type": "string",
+            "nullable": true
+          },
+          "employeeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoHead": {
+        "required": [
+          "description",
+          "employeeName",
+          "job",
+          "lotNumber",
+          "partNo",
+          "prodName",
+          "status",
+          "tube1Spec"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "job": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "partNo": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "lotNumber": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "employeeName": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "prodName": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "tube1Spec": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string"
+          },
+          "tube2Spec": {
+            "maxLength": 20,
+            "type": "string",
+            "nullable": true
+          },
+          "downtimeNote": {
+            "maxLength": 500,
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoSaveRequest": {
+        "type": "object",
+        "properties": {
+          "head": {
+            "$ref": "#/components/schemas/IpoHead"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IpoDetail"
+            },
+            "nullable": true
+          },
+          "temperatures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IpoTemperature"
+            },
+            "nullable": true
+          },
+          "defects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IpoDefect"
+            },
+            "nullable": true
+          },
+          "tube1List": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IpoTube1"
+            },
+            "nullable": true
+          },
+          "tube2List": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IpoTube2"
+            },
+            "nullable": true
+          },
+          "isEdit": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoTemperature": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "detailRunNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "speed": {
+            "type": "number",
+            "format": "double"
+          },
+          "temp1": {
+            "type": "number",
+            "format": "double"
+          },
+          "temp2": {
+            "type": "number",
+            "format": "double"
+          },
+          "temp3": {
+            "type": "number",
+            "format": "double"
+          },
+          "temp4": {
+            "type": "number",
+            "format": "double"
+          },
+          "tempPipe": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoTube1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "detailRunNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "insideDia1": {
+            "type": "number",
+            "format": "double"
+          },
+          "insideDia2": {
+            "type": "number",
+            "format": "double"
+          },
+          "insideDiaAvg": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness1": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness2": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness3": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness4": {
+            "type": "number",
+            "format": "double"
+          },
+          "thicknessAvg": {
+            "type": "number",
+            "format": "double"
+          },
+          "judgement": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IpoTube2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "detailRunNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "insideDia1": {
+            "type": "number",
+            "format": "double"
+          },
+          "insideDia2": {
+            "type": "number",
+            "format": "double"
+          },
+          "insideDiaAvg": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness1": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness2": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness3": {
+            "type": "number",
+            "format": "double"
+          },
+          "thickness4": {
+            "type": "number",
+            "format": "double"
+          },
+          "thicknessAvg": {
+            "type": "number",
+            "format": "double"
+          },
+          "judgement": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobResponse": {
+        "type": "object",
+        "properties": {
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "thickness": {
+            "type": "number",
+            "format": "double"
+          },
+          "width": {
+            "type": "number",
+            "format": "double"
+          },
+          "length": {
+            "type": "number",
+            "format": "double"
+          },
+          "qtyReleased": {
+            "type": "number",
+            "format": "double"
+          },
+          "colorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "pvcColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "colorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "materialType": {
+            "type": "string",
+            "nullable": true
+          },
+          "finishedItem": {
+            "type": "string",
+            "nullable": true
+          },
+          "finishedDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemMst": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SlitDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "job": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "actualFoamWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "embossLot": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "embossRoll": {
+            "type": "string",
+            "nullable": true
+          },
+          "embossTotalRoll": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstShotThick": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "firstShotWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "rollUsed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productedQty": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "remainThick": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "remainLength": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "remainWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ng": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "lossOverStd": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "lossProduct": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "actualUsedQty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "yield": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SlitHead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "job": {
+            "type": "string",
+            "nullable": true
+          },
+          "partNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "materialNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "stdThick": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "stdWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "stdLength": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "productDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lotNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "lotNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "employeeName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SlitSaveRequest": {
+        "type": "object",
+        "properties": {
+          "head": {
+            "$ref": "#/components/schemas/SlitHead"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlitDetail"
+            },
+            "nullable": true
+          },
+          "isEdit": {
+            "type": "boolean"
+          },
+          "originalJob": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "ActivityLog"
+    },
+    {
+      "name": "Ipo"
+    },
+    {
+      "name": "Slit"
+    }
+  ]
+}
